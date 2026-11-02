@@ -9,11 +9,11 @@ public final class BookingHelper {
     private BookingHelper() {
     }
 
-    public static int createBooking() {
+    public static int createBooking(String firstname, String lastname) {
         String body = """
         {
-          "firstname": "Adrian",
-          "lastname": "Test",
+          "firstname": "%s",
+          "lastname": "%s",
           "totalprice": 100,
           "depositpaid": true,
           "bookingdates": {
@@ -22,15 +22,15 @@ public final class BookingHelper {
           },
           "additionalneeds": "Breakfast"
         }
-        """;
+        """.formatted(firstname, lastname);
 
-        return given()
-                    .spec(Specs.request())
-                    .body(body)
-                .when()
-                    .post("/booking")
-                .then()
-                    .statusCode(200)
-                    .extract().path("bookingid");
+        return given().spec(Specs.request()).body(body)
+                .when().post("/booking")
+                .then().statusCode(200)
+                .extract().path("bookingid");
+    }
+
+    public static int createBooking() {
+        return createBooking("Adrian", "Test");
     }
 }
