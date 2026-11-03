@@ -1,7 +1,7 @@
 # Restful Booker API Tests
 
 Automated API tests for [Restful Booker](https://restful-booker.herokuapp.com), a public practice API for hotel bookings.
-The suite covers authentication and the full booking CRUD flow, with test cases derived from classic test design techniques.
+The suite covers authentication and the full booking CRUD flow, with test cases derived from formal test design techniques (EP, BVA, Decision Tables, State Transition) and real API defects found and documented along the way.
 
 ## Tech stack
 
